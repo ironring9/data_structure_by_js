@@ -34,9 +34,7 @@ var LinkedList = (function () {
             this.head = node.nextNode;
             delete node;
         } else {
-            while (current) {
-                if (index == currentIndex + 1) break;
-    
+            while (crrentIndex < index) {
                 current = current.nextNode;
                 currentIndex++;
             }
@@ -53,9 +51,7 @@ var LinkedList = (function () {
         var current = this.head;
         var currentIndex = 0;
 
-        while (current) {
-            if (index == currentIndex) break;
-
+        while (currentIndex <= index) {
             current = current.nextNode;
             currentIndex++;
         }
@@ -69,11 +65,10 @@ var LinkedList = (function () {
         var currentIndex = 0;
 
         if (index == 0) {
+            node.nextNode = this.head;
             this.head = node;
         } else {
-            while (current) {
-                if (index == currentIndex + 1) break;
-
+            while (currentIndex < index) {
                 current = current.nextNode;
                 currentIndex++;
             }
