@@ -4,7 +4,7 @@ var DoubleLinkedList = (function () {
         this.nextNode = null;
         this.prevNode = null;
     }
-
+ 
     function DoubleLinkedList () {
         this.length = 0;
         this.head = null;
@@ -38,13 +38,11 @@ var DoubleLinkedList = (function () {
                 this.tail = null;
             }
                 
-            delete current;
         } else if (index == this.length - 1) {
             var current = this.tail; 
 
             this.tail = current.prevNode;
             this.tail.nextNode = null;
-            delete current;
         } else {
             var current = this.head;
             var currentIndex = 0;
@@ -56,7 +54,6 @@ var DoubleLinkedList = (function () {
     
             current.prevNode.nextNode = current.nextNode;
             current.nextNode.prevNode = current.prevNode;
-            delete current;
         }
 
         this.length--;

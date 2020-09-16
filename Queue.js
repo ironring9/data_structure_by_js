@@ -28,8 +28,6 @@ var Queue = (function () {
         var data = node.data;
 
         this.front = node.next;
-        this.count--;
-        delete node;
 
         return data;
     }
