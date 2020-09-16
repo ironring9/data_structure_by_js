@@ -21,6 +21,8 @@ var DoubleLinkedList = (function () {
             node.prevNode = this.tail;
             this.tail = node;
         }
+
+        this.length++;
     }
 
     DoubleLinkedList.prototype.remove = function (index) {
@@ -28,8 +30,14 @@ var DoubleLinkedList = (function () {
 
         if (index == 0) {
             var current = this.head;
-            this.head = current.nextNode;
-            this.head.prevNode = null;
+            if (current.nextNode) {
+                this.head = current.nextNode;
+                this.head.prevNode = null;
+            } else {
+                this.head = null;
+                this.tail = null;
+            }
+                
             delete current;
         } else if (index == this.length - 1) {
             var current = this.tail; 
@@ -116,13 +124,14 @@ var DoubleLinkedList = (function () {
 
 var list = new DoubleLinkedList();
 list.add(3);
+list.remove(0);
 console.log(list.get(0));
 list.add(55);
 list.add(2);
 console.log(list.getAll());
 list.remove(1);
 console.log(list.getAll());
-list.insert(30, 1);
+list.insert(30, 0);
 console.log(list.get(1));
 list.remove(0);
 console.log(list.getAll());
